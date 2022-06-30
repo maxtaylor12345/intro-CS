@@ -1,26 +1,101 @@
-
 void setup() {
   size(1000, 1000);
   background(#4ABAF5);
   fill(#1C8B3E);
   rect(0, 4.5*(height/5), width, height/5);
 }
-
 void draw() {
-  if (frameCount % 100 ==0) {
-    size(1000, 1000);
-    background(#4ABAF5);
-    fill(#1C8B3E);
-    rect(0, 4.5*(height/5), width, height/5);
+  if (keyCode==32) {
+      sky(random(0, 1)<.5);
+      stroke(0);
+      noStroke();
+      fill(#1C8B3E);
+      rect(0, 4.5*(height/5), width, height/5);
 
-    house(1*width/5, 4*(height/5), 100, (random(0, 1) < 0.5));
-    house(2*width/5, 4*(height/5), 100, (random(0, 1) < 0.5));
-    house(3*width/5, 4*(height/5), 100, (random(0, 1) < 0.5));
-    house(4*width/5, 4*(height/5), 100, (random(0, 1) < 0.5));
+      house(1*width/5, 4*(height/5), 100, (random(0, 1) < 0.5));
+      house(2*width/5, 4*(height/5), 100, (random(0, 1) < 0.5));
+      house(3*width/5, 4*(height/5), 100, (random(0, 1) < 0.5));
+      house(4*width/5, 4*(height/5), 100, (random(0, 1) < 0.5));
+      keyCode=1;
+  }
+}
+
+void sky(boolean sky1) {
+  if (sky1) {
+    background(000);
+    strokeWeight(10);
+    stroke(255);
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+    point(random(0, width), random(0, height/3));
+  } else if (!sky1) {
+    background(#4ABAF5);
   }
 }
 
 void house(float x, float y, float size, boolean big) {
+  strokeWeight(1);
+  stroke(0);
   if (!big) {
     fill(#6C460D);
     rect(x, y, size, size);

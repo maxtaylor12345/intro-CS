@@ -1,17 +1,17 @@
-int start = 1;
+boolean start = false;
 float rx;
 float ry;
 void setup() {
   size(500, 500);
 }
 void mousePressed() {
-  start++;
+  start=true;
 }
 void draw() {
   rx = random(0, width);
   ry = random(0, height);
-  if (start % 2 == 0) {
-    strokeWeight(25);
+  if (start) {
+    strokeWeight(20);
     if (rx <= width/2 && rx >= 0 && ry <= height/2 && ry >= 0) {
       stroke(#A22645);
     } else if (rx >= width/2 && rx <= width && ry <= height/2 && ry >=0) {

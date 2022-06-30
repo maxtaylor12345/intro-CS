@@ -10,7 +10,7 @@ String lastWall3;
 //color choosing and setting
 float r2 = 0;//red value of line 2
 float g2 = 0;//green value of line 2
-float b2 = 0;//blue value of line 2
+float b2 = 0;// blue value of line 2
 float r3 = 0;//red value of line 3
 float g3 = 0;//green value of line 3
 float b3 = 0;//blue value of line 3
@@ -18,7 +18,7 @@ float rgb2;//counter for end
 float rgb3;//counter for end
 int color2;//randomizer
 int color3;//randomizer
-int colorSpeed = 20;//change per colorSpeed frames
+int Speed = 20;//change per Speed frames and subsequently how long the code runs for
 //first line
 float startX;
 float startY;
@@ -53,11 +53,11 @@ void mousePressed() {//randomize initial values and on switch
     moveY=startY;
     xspeed1 = random(-10, 10);
     yspeed1 = random(-10, 10);
-    start = true;
     while (color2==color3) {//guarantees colors are not the same
       color2 = (int)random(6);
       color3 = (int)random(6);
     }
+    start = true;
   }
 }
 void draw() {
@@ -77,8 +77,11 @@ void draw() {
        wall1, wall2, wall3, wall4, x of point, y of point, line number*/
       checkWall(0+10, width-10, 0+10, height-10, startX+xspeed1, startY+yspeed1, 1);
     } else if (!firstline) {//primary|secondary switch
+      if (line2Startx + xspeed2==line3Startx+xspeed3&&line2Starty+yspeed2==line3Starty + yspeed3) {
+        exit();
+      }
       if (rgb2<156) {
-        if (frameCount % colorSpeed ==0) {//speed control
+        if (frameCount % Speed ==0) {//speed control
           //different randomized values create different colors
           if (color2==0) {
             r2++;
@@ -119,7 +122,7 @@ void draw() {
       line2Starty+=yspeed2;
       checkWall(0+10, width-10, 0+10, height-10, line2Startx, line2Starty, 2);
       if (rgb3<156) {
-        if (frameCount % colorSpeed == 0) {
+        if (frameCount % Speed == 0) {
           if (color3==0) {
             r3++;
             //g3++;
