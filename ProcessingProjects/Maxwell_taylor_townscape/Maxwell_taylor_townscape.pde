@@ -1,47 +1,49 @@
 float r;
 float g;
 float b;
-int row1;
-int row2;
-int row3;
-boolean chimney1;
-boolean chimney2;
-boolean chimney3;
-boolean chimney4;
 void setup() {
   size (500, 500);
   gradient(232, 12, 214, 193, 118, 4);
   fill(#307C1A);
-  rect(0, height/2, width, height/2);
-  for (int by = height/2; by < height; by+=100) {
-    if (int(random(0, 1))==0) {
-      shop(width/2-200, by, 50, int(random(1, 3)));
-    } else if (int(random(0, 1))==1) {
-      hut(width/2-200, by, 50, int(random(0, 1))<0.5);
-    }
-    if (int(random(0, 1))==0) {
-      shop(width/2-100, by, 50, int(random(1, 3)));
-    } else if (int(random(0, 1))==1) {
-      hut(width/2-100, by, 50, int(random(0, 1))<0.5);
-    }
-    if (int(random(0, 1))==0) {
-      shop(width/2, by, 50, int(random(1, 3)));
-    } else if (int(random(0, 1))==1) {
-      hut(width/2, by, 50, int(random(0, 1))<0.5);
-    }
-    if (int(random(0, 1))==0) {
-      shop(width/2+100, by, 50, int(random(1, 3)));
-    } else if (int(random(0, 1))==1) {
-      hut(width/2+100, by, 50, int(random(0, 1))<0.5);
-    }
-    if (int(random(0, 1))==0) {
-      shop(width/2+200, by, 50, int(random(1, 3)));
-    } else if (int(random(0, 1))==1) {
-      hut(width/2+200, by, 50, int(random(0, 1))<0.5);
+  rect(-5, height/2, width+5, height/2);
+  for (int by = height/2; by < height; by+=height/5) {
+    for (int x = width/5; x<width; x+=(width-width/5)/5) {//new way
+      if (random(0, 1)<0.5) {
+        shop(x, by, width/10, int(random(1, 4)));
+      } else {
+        hut(x, by, width/10, (random(0, 1))<0.5);
+      }
     }
   }
-}
 
+  /* old way of doing it
+   if (random(0, 1)<0.5) {
+   shop(width/2-200, by, 50, int(random(1, 4)));
+   } else {
+   hut(width/2-200, by, 50, (random(0, 1))<0.5);
+   }
+   if (random(0, 1)<0.5) {
+   shop(width/2-100, by, 50, int(random(1, 4)));
+   } else {
+   hut(width/2-100, by, 50, (random(0, 1))<0.5);
+   }
+   if (random(0, 1)<0.5) {
+   shop(width/2, by, 50, int(random(1, 4)));
+   } else {
+   hut(width/2, by, 50, (random(0, 1))<0.5);
+   }
+   if (random(0, 1)<0.5) {
+   shop(width/2+100, by, 50, int(random(1, 4)));
+   } else {
+   hut(width/2+100, by, 50, (random(0, 1))<0.5);
+   }
+   if (random(0, 1)<0.5) {
+   shop(width/2+200, by, 50, int(random(1, 4)));
+   } else {
+   hut(width/2+200, by, 50, (random(0, 1))<0.5);
+   }
+   */
+}
 void draw() {
 }
 
