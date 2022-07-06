@@ -2,7 +2,7 @@ void setup() {
   size(500, 500);
   background(#3AAFCE);
   for (int x=50; x<=width-100; x+=(width-150)/4) {
-    boolean color1=random(0, 1)>.5;
+    boolean color1 = random(0, 1)>.5;
     int suit1 = int(random(1, 5));
     int value1 = int(random(1, 11));
     fill(255);
@@ -29,14 +29,14 @@ void card(int x1, int value, int suit, boolean suitColor) {
       fill(#B1BC1B);
     }
     circle(x1+40, height/2-40, 15);
-  }else if (suit==3) {
+  } else if (suit==3) {
     if (suitColor) {
       fill(#651BBC);
     } else {
       fill(#8E0B0B);
     }
     diamond(x1+35, height/2-45, 15);
-  }else if (suit==4) {
+  } else if (suit==4) {
     if (suitColor) {
       fill(000);
     } else {
