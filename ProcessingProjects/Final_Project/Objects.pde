@@ -1,12 +1,17 @@
-void player(float pSize) {
+void player() {//player object
   push();
   translate(pX, pY);
   fill(255);
   noStroke();
-  triangle(-(pSize*6), pSize*2, (pSize*6), pSize*2, 0, pSize*17);
-  circle(0, (pSize*5)-(9.3333*pSize), pSize*10);
+  triangle(-(SP*6), SP*2, (SP*6), SP*2, 0, SP*17);
+  circle(0, (SP*5)-(9.3333*SP), SP*10);
   pop();
-  hitBox(pX, pY+pSize*2.5, pSize*12.5, pSize*28, false);
+  if (!health) {
+    gameOver = true;
+  }
+  hitBox(pX, pY+SP*2.5, SP*12.5, SP*28, false);
 }
 
-void enemy(){}
+void enemy(float x, float y, float size) {//ball object
+  circle(x, y, size);
+}
