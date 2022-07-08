@@ -1,4 +1,4 @@
-void hitBox(float centerX, float centerY, float radx, float rady, boolean circle) {//draws hittbox around target //<>//
+void hitBox(float centerX, float centerY, float radx, float rady, boolean circle) {//draws hittbox around target
   if (hbShow) {//visible hitbox can be turned on and off
     strokeWeight(1);
     noFill();
