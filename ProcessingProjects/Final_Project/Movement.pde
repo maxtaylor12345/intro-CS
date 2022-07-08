@@ -20,7 +20,7 @@ void keyReleased() {//track releasing of WASD or arrow keys
     wasd[3]=false;
   }
 }
-void direction() {//sets speeds based off of above 
+void direction() {//sets speeds based off of above
   if (wasd[0]&&Wgo) {
     pYspeed=-speed;
   } else if (wasd[2]&&Sgo) {
@@ -35,7 +35,7 @@ void direction() {//sets speeds based off of above
   } else {
     pXspeed=0;
   }
-  if (pXspeed!=0&&pYspeed!=0){
+  if (pXspeed!=0&&pYspeed!=0) {
     pXspeed=pXspeed/sqrt(2);
     pYspeed=pYspeed/sqrt(2);
   }

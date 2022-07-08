@@ -19,20 +19,22 @@ int Countdown = -1;//countdown before balls spawn
 int count;//count frames for countdown
 int count2;//counts frames for score
 int score = 0;//tracks score
-int ballCount = 1;//tracks ball count
+int level = 0;//tracks level
 float SP = 3.75;//size of player
 float[] ballSize = new float[1];//size of balls
 float[] ballX = new float[1];//X of balls
 float[] ballY = new float[1];//Y of balls
 boolean health = true;//tracks if player has been hit
 
-String[] HighScoreSave = loadStrings("HighScore.txt");
-int HighScore = Integer.parseInt(HighScoreSave[0]);
-
+boolean newHighScore = false;
+String[] HighScoreSave = new String[1];
+int HighScore;
 //PVector idea from Feingold, use of arrays from https://forum.processing.org/one/topic/vector-arrays.html
 PVector[] ballSpeed = new PVector[1];//tracks speeds for each ball
 int speedBall = 10;//regulated speed of balls
 void setup() {
+  HighScoreSave = loadStrings("HighScore.txt");
+  HighScore = Integer.parseInt(HighScoreSave[0]);
   size(1000, 1000);
   background(000);
   //centers player
@@ -87,7 +89,7 @@ void draw() {
           PVector hold = new PVector(random(0, 1), random(0, 1));
           hold = hold.normalize().mult(map(ballSize[ballSize.length-1], 50, 100, speedBall, speedBall/3));
           ballSpeed = (PVector[])append(ballSpeed, hold);
-          ballCount++;
+          level++;
           //append arrays to add new ball }
         }
         //draw balls {
@@ -113,7 +115,7 @@ void draw() {
       textSize(50);
       fill(255);
       text(score, width-100, 100);
-      text(ballCount, width-100, 150);
+      text(level, width-100, 150);
       stroke(125);
       strokeWeight(10);
       fill(#29901C);
@@ -133,22 +135,33 @@ void draw() {
       //draw start button }
     }
   } else if (gameOver) {
-    if (score>HighScore){
-      HighScore=score;
-      HighScoreSave[0] = String.valueOf(score);
+    if (score>Integer.parseInt(HighScoreSave[0])) {
+      HighScoreSave[0] = String.valueOf(score+1);
       saveStrings("HighScore.txt", HighScoreSave);
+      newHighScore = true;
     }
-    //draw game over screen {
-    background(000);
-    textAlign(CENTER, CENTER);
-    fill(255);
-    textSize(100);
-    text("GAME OVER", width/2, height/2-250);
-    text("Score:", width/2, height/2-150);
-    text(score, width/2, height/2-50);
-    text("Ball Count:", width/2, height/2+50);
-    text(ballCount, width/2, height/2+150);
-
+    if (newHighScore) {
+      background(000);
+      textAlign(CENTER, CENTER);
+      fill(255);
+      textSize(100);
+      text("GAME OVER", width/2, height/2-250);
+      text("New High Score:", width/2, height/2-150);
+      text(score, width/2, height/2-50);
+      text("Ball Count:", width/2, height/2+50);
+      text(level, width/2, height/2+150);
+    } else {
+      //draw game over screen {
+      background(000);
+      textAlign(CENTER, CENTER);
+      fill(255);
+      textSize(100);
+      text("GAME OVER", width/2, height/2-250);
+      text("Score:", width/2, height/2-150);
+      text(score, width/2, height/2-50);
+      text("Level:", width/2, height/2+50);
+      text(level, width/2, height/2+150);
+    }
     rectMode(CENTER);
     rect(width/2, height-200, 150, 75);
     textSize(50);
@@ -163,6 +176,8 @@ void mousePressed() {
     Countdown=3;
   } else if (mouseX>=width/2-75&&mouseX<=width/2+75&&mouseY>=height-237.5&&mouseY<=height-162.5&&gameOver) {//checking restart button
     //reset all variables {
+
+    newHighScore = false;
     pX = 0;
     pY = 0;
     wasd = new boolean[4];
@@ -188,7 +203,9 @@ void mousePressed() {
     //PVector idea from Feingold, use of arrays from https://forum.processing.org/one/topic/vector-arrays.html
     ballSpeed = new PVector[1];
     speedBall = 10;
-
+    level = 0;
+    HighScoreSave = loadStrings("HighScore.txt");
+    HighScore = Integer.parseInt(HighScoreSave[0]);
     background(000);
     pX = width/2;
     pY = height/2;
