@@ -1,13 +1,13 @@
 void startScreen() {
   //draw start button and High Score {
-  text("W", width/4, height/4-100, 100);
+  text("W", width/4, height/4-80, 100);
   text("A", width/4-75, height/4, 100);
-  text("S", width/4, height/4+100, 100);
+  text("S", width/4, height/4+80, 100);
   text("D", width/4+75, height/4, 100);
 
-  text("↑", 3*(width/4), height/4-100, 100);
+  text("↑", 3*(width/4), height/4-80, 100);
   text("←", 3*(width/4-25), height/4, 100);
-  text("↓", 3*(width/4), height/4+100, 100);
+  text("↓", 3*(width/4), height/4+80, 100);
   text("→", 3*(width/4+25), height/4, 100);
 
   stroke(125);
@@ -47,11 +47,6 @@ void startScreen() {
   pop();
   pop();
   //start screen scene }
-
-
-
-
-
   textSize(100);
   fill(255);
   if (Integer.parseInt(HighScoreSave[0]) > 0) {

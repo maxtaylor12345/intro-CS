@@ -33,7 +33,7 @@ void endClick() {
   pX = width/2;
   pY = height/2;
   for (int i = 0; i<ballSize.length; i++) {
-    ballSize[i] = random(5, 100);
+    ballSize[i] = random(50, 100);
     ballX[i] = width/2;
     ballY[i] = 100;
     ballSpeed[i] = new PVector(random(0, 1), random(0, 1));

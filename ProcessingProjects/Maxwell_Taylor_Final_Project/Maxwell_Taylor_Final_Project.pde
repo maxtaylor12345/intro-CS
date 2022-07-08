@@ -56,7 +56,6 @@ void setup() {
   //centers player
   pX = width/2;
   pY = height/2;
-
   for (int i = 0; i<ballSize.length; i++) {//gives values to the first ball
     ballSize[i] = random(50, 100);//random size
     ballX[i] = width/2;
